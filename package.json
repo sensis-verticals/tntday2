@@ -1,0 +1,19 @@
+{
+  "name": "tntday2",
+  "version": "0.0.0",
+  "description": "TNT Day 2 Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sensis-verticals/tntday2.git"
+  },
+  "license": "BSD",
+  "dependencies": {
+    "express": "~2.5.9",
+    "redis": "~0.7.2",
+    "hiredis": "~0.1.14"
+  }
+}
