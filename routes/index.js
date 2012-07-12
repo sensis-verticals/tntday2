@@ -23,10 +23,19 @@ exports.outside = function(req, res) {
 
 };
 
-exports.highscores = function(req, res) {
-    res.render('highscores', {
-        title: 'High Scores',
-        activeTab: 'highscores',
-        topten: user.list({ limit: 10, sortby: 'leads', sortorder: 'desc'})
-    });
+exports.highscores = function(req, res, next) {
+    user.list(
+        { limit: 10, sortby: 'leads', sortorder: 'desc'},
+        function(err, results) {
+            if (err) {
+                next(err);
+            } else {
+                res.render('highscores', {
+                    title: 'High Scores',
+                    activeTab: 'highscores',
+                    topten: results
+                });
+            }
+        }
+    );
 };
