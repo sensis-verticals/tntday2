@@ -8,6 +8,10 @@ var express = require('express')
 
 var app = module.exports = express.createServer();
 
+if (!process.env['SAPI_KEY']) {
+  throw "Environment variable SAPI_KEY must be defined";
+}
+
 // Configuration
 
 app.configure(function(){
