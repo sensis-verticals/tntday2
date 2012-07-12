@@ -1,61 +1,26 @@
-
-body
-    div.navbar.navbar-fixed-top
-      div.navbar-inner
-        div.container
-          a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-
-          a.brand(href="#")Sensis Business Finda
-          div.nav-collapse
-            ul.nav
-              li.active
-                a(href="#") Home
-              li
-                a(href="#about") About
-              li
-                a(href="#contact") Contact
-
-    div.container
-
-      // Main hero unit for a primary marketing message or call to action
-      div.hero-unit
-        h1.wally Finda
-          p Where are you ?
-          p
-            a#outside.btn.btn-primary.btn-large At the business &raquo;
-          p
-            a.btn.btn-primary.btn-large(href="elsewhere") Somewhere else &raquo;
-
-      hr
-
-      footer
-        p
-            &copy;Sensis Pty Ltd 2012
-
-script(src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")
-script
-    window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')
-
-// scripts concatenated and minified via ant build script
-script(src="js/libs/bootstrap/bootstrap.min.js")
-
-script(src="js/script.js")
-
-script
-
-    $("#outside").click(function() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(success);
-        } else {
-          alert("I'm sorry but we can't tell where you are. Can you help ?");
-        }
-    });
-
-    function success(position) {
-        if (position && position.coords) {
-            window.location = "outside?lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
-        }
-    }
+// Main hero unit for a primary marketing message or call to action
+div.hero-unit
+	h1.wally Finda
+	p Where are you ?
+	p
+		a#outside.btn.btn-primary.btn-large At the business &raquo;
+	p
+		a.btn.btn-primary.btn-large(href="elsewhere") Somewhere else &raquo;
+	hr
+	script
+		(function($) {
+			$(document).ready(function() {
+				$("#outside").click(function() {
+					if (navigator.geolocation) {
+						navigator.geolocation.getCurrentPosition(success);
+					} else {
+						alert("I'm sorry but we can't tell where you are. Can you help ?");
+					}
+				});
+				function success(position) {
+					if (position && position.coords) {
+						window.location = "outside?lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
+					}
+				}
+			});
+		})(window.jQuery);

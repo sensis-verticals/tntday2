@@ -1,8 +1,9 @@
 var http = require('http'),
-fs = require('fs');
+    fs = require('fs'),
+    user = require('../lib/user');
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' })
+  res.render('index', { activeTab: 'home', title: 'Express' })
 };
 
 function getSapiResponse(latitude, longitude, callback) {
@@ -38,4 +39,12 @@ exports.outside = function(req, res) {
     res.render('outside', {lat: lat, long: long, data: data});
   });
 
+};
+
+exports.highscores = function(req, res) {
+    res.render('highscores', {
+        title: 'High Scores',
+        activeTab: 'highscores',
+        topten: user.list({ limit: 10, sortby: 'leads', sortorder: 'desc'})
+    });
 };
