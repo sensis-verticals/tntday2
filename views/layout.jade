@@ -21,6 +21,9 @@ head
 		link(rel="stylesheet", href="css/bootstrap-responsive.min.css")
 		link(rel="stylesheet", href="css/style.css")
 		script(src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js")
+		script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+		script
+			window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')
 body
 		div.navbar.navbar-fixed-top
 			div.navbar-inner
@@ -41,9 +44,6 @@ body
 		p
 			&copy;Sensis Pty Ltd 2012
 
-script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")
-script
-	window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')
 
 // scripts concatenated and minified via ant build script
 script(src="js/libs/bootstrap/bootstrap.min.js")

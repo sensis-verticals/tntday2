@@ -9,7 +9,7 @@ div.hero-unit
 	hr
 	script
 		(function($) {
-			$.ready(function() {
+			$(document).ready(function() {
 				$("#outside").click(function() {
 					if (navigator.geolocation) {
 						navigator.geolocation.getCurrentPosition(success);
