@@ -1,7 +1,8 @@
-var http = require('http');
+var http = require('http'),
+    user = require('../lib/user');
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' })
+  res.render('index', { activeTab: 'home', title: 'Express' })
 };
 
 
@@ -20,4 +21,12 @@ exports.outside = function(req, res) {
     })
   });
 
+};
+
+exports.highscores = function(req, res) {
+    res.render('highscores', {
+        title: 'High Scores',
+        activeTab: 'highscores',
+        topten: user.list({ limit: 10, sortby: 'leads', sortorder: 'desc'})
+    });
 };

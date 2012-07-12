@@ -1,0 +1,15 @@
+div.hero-unit
+	h1= title
+	table.table.table-bordered.table-striped
+		thead
+			tr
+				th Rank
+				th Name
+				th Score
+		tbody
+			each user, rank in topten
+				tr
+					td= rank 
+					td= user.id
+					td= user.leads
+
