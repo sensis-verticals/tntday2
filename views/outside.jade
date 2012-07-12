@@ -1,11 +1,17 @@
-
-h1 Hey I think I can see you:
-p
-#{lat} : #{long}
-ul
-    for x in data.results
-        li= x.name
+div.container
+	div.hero-unit
+		ul
+			for x in data.results
+				li= x.name
 
 
+script
+	$(document).ready(function() {
+		navigator.geolocation.getCurrentPosition(function (position) {
 
-
+			var geocoder = new EMS.Services.Geocoder();
+			geocoder.reverseGeocode(position.coords.longitude, position.coords.latitude, function(addr) {
+				alert(JSON.stringify(addr));
+			});
+		});
+	});
