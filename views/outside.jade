@@ -1,4 +1,7 @@
 div.container
+
+	div#MapDiv
+
 	div.hero-unit
 		ul
 			for x in data.results
@@ -7,6 +10,7 @@ div.container
 
 script
 	$(document).ready(function() {
+		var map = new EMS.Services.Map("MapDiv");
 		navigator.geolocation.getCurrentPosition(function (position) {
 
 			var geocoder = new EMS.Services.Geocoder();
