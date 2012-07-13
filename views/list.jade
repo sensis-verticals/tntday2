@@ -25,7 +25,7 @@ for x in data.results
 </table>
 </div>
 <div class="tab-pane" id="tab2">
-<p>Put map here</p>
+<div style="width:320px; height:320px;" id="map">
 </div>
 <div class="tab-pane" id="tab3">
 <p>Put leader board here</p>
@@ -38,3 +38,13 @@ for x in data.results
 </form>
 </div> <!-- /container -->
 
+
+script
+   $(document).ready(function() {
+     var poiCounter=0;
+
+     var map = new EMS.Services.Map('map',{zoom:12,center:new EMS.LonLat(#{long},#{lat})});
+     var icon = EMS.Services.StandardIcons.poi(map.tilePath, "000000","ff0000", poiCounter+=1);
+     map.markersLayer.addMarker(new OpenLayers.Marker(new EMS.LonLat(144.96291, -37.813585), EMS.Services.StandardIcons.poi(map.tilePath, "000000","ff0000", poiCounter+=1)));
+     map.markersLayer.addMarker(new OpenLayers.Marker(new EMS.LonLat(144.96291, -37.813578), EMS.Services.StandardIcons.poi(map.tilePath, "000000","ff0000", poiCounter+=1)));
+   });
