@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -44,6 +43,10 @@ app.get('/form', routes.form);
 app.get('/form', routes.successful);
 
 app.post('/business', routes.addBusiness);
+
+process.on('uncaughtException', function (err) {
+  console.error('Uncaught exception: ' + err.message);
+});
 
 app.listen('production' === process.env.NODE_ENV ? 80 : 3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
