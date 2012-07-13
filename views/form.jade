@@ -18,7 +18,7 @@ h2 Put logo here
 <input name="businessname" type="text" class="span3" placeholder="Enter business name">
 
 <label>Business Address</label>
-<input name="address" type="text" class="span3" placeholder="Enter business address">
+<input name="address" id="address" type="text" class="span3" placeholder="Enter business address">
 
 <label>Comments</label>
 <input name="comments" type="text" class="span3" placeholder="Enter comments">
@@ -33,10 +33,10 @@ h2 Put logo here
 script
     $(document).ready(function() {
         navigator.geolocation.getCurrentPosition(function (position) {
-        alert("position is " + position);
         var geocoder = new EMS.Services.Geocoder();
         geocoder.reverseGeocode(position.coords.longitude, position.coords.latitude, function(addr) {
-            alert(JSON.stringify(addr));
+                $('#address').val(addr.results[0].street.fullName + ", "  + addr.results[0].suburb );
+
             });
         });
     });
