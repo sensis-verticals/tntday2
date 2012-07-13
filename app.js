@@ -40,7 +40,6 @@ app.get('/user/:id', routes.user);
 
 app.get('/list', routes.list);
 app.get('/form', routes.form);
-app.get('/form', routes.successful);
 
 app.post('/business', routes.addBusiness);
 

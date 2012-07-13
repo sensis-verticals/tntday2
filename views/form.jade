@@ -29,3 +29,14 @@ h2 Put logo here
 
 <button type="submit" class="btn-info">Next</button>
 </form>
+
+script
+    $(document).ready(function() {
+        navigator.geolocation.getCurrentPosition(function (position) {
+        alert("position is " + position);
+        var geocoder = new EMS.Services.Geocoder();
+        geocoder.reverseGeocode(position.coords.longitude, position.coords.latitude, function(addr) {
+            alert(JSON.stringify(addr));
+            });
+        });
+    });
