@@ -1,26 +1,23 @@
 // Main hero unit for a primary marketing message or call to action
-div.hero-unit
-	h1.wally Finda
-	p Where are you ?
-	p
-		a#outside.btn.btn-primary.btn-large At the business &raquo;
-	p
-		a.btn.btn-primary.btn-large(href="elsewhere") Somewhere else &raquo;
-	hr
-	script
-		(function($) {
-			$(document).ready(function() {
-				$("#outside").click(function() {
-					if (navigator.geolocation) {
-						navigator.geolocation.getCurrentPosition(success);
-					} else {
-						alert("I'm sorry but we can't tell where you are. Can you help ?");
-					}
-				});
-				function success(position) {
-					if (position && position.coords) {
-						window.location = "outside?lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
-					}
-				}
-			});
-		})(window.jQuery);
+div.container
+	div.hero-unit
+		h1 Welcome to Findr!
+		p Click on the button below to get started.
+		a.btn.btn-primary.btn-large(onClick='sendLocation()') Let's get started
+
+
+script 
+	function sendLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(getSAPIDATA);
+		}
+		else {
+			// alert user geolocation is not turn on.
+		}
+	}
+	function getSAPIDATA(position) {
+		if (position && position.coords) {
+			window.location = "list?lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
+		}  
+
+	}

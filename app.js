@@ -34,9 +34,15 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
+app.get('/splash', routes.splash);
 app.get('/outside', routes.outside);
 app.get('/highscores', routes.highscores);
 app.get('/user/:id', routes.user);
+
+app.get('/list', routes.list);
+app.get('/form', routes.form);
+app.get('/form', routes.successful);
+
 
 app.listen('production' === process.env.NODE_ENV ? 80 : 3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

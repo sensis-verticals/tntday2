@@ -70,3 +70,18 @@ exports.user = function(req, res, next) {
     });
 };
 
+exports.splash = function (req, res, next) {
+  res.render('splash', {});
+}
+
+exports.list = function (req, res, next) {
+  res.render('list', {});
+}
+
+exports.form = function (req, res, next) {
+  res.render('form', {});
+}
+
+exports.successful = function (req, res, next) {
+  res.render('successful', {});
+}
