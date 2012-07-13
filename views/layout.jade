@@ -32,7 +32,7 @@ head
 		script
 			window.jQuery || document.write('<script src="/js/libs/jquery-1.7.2.min.js"><\/script>')
 body
-		div.navbar.navbar-fixed-top
+		div.navbar
 			div.navbar-inner
 				div.container
 					a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
@@ -40,12 +40,9 @@ body
 						span.icon-bar
 						span.icon-bar
 					a.brand(href="/") Slimy
-					div.nav-collapse
-						ul.nav.nav-tabs
-							li
-								a(href="/") Home
-							li.active
-								a(href="/highscores") High Scores
+					ul.nav.nav-tabs
+						li
+							a(href="/highscores") High Scores
 	div.container!= body
 	footer.footer
 		p

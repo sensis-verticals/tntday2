@@ -1,4 +1,4 @@
-var http = require('http'),
+var request = require('request'),
     fs = require('fs'),
     user = require('../lib/user'),
     business = require('./business');
@@ -9,18 +9,18 @@ exports.index = function(req, res){
 
 function getSapiResponse(latitude, longitude, callback) {
   var sapiRequest = "http://api.sensis.com.au/ob-20110511/test/search?location=" + latitude + "," + longitude + "&key=" + process.env['SAPI_KEY'],
-  data = "";
-                lat = -37.8106204,
-                long = 144.9654641;
+      data = "";
 
-  http.get(sapiRequest, function(sapiRes) {
-    sapiRes.on('data', function(d) {
-        data += d;
-    });
-    sapiRes.on('end', function(d) {
-        callback(null, JSON.parse(data));
-    });
-  });
+  request(
+      {
+          method: 'GET',
+          uri: sapiRequest,
+          proxy: process.env.http_proxy
+      },
+      function(err, sapiRes) {
+          callback(null, JSON.parse(sapiRes.body));
+      }
+  );
 }
 
 function readDummySapiData(latitude, longitude, callback) {
@@ -37,7 +37,7 @@ exports.outside = function(req, res) {
   var lat = req.query.lat;
   var long = req.query.long;
   var getSapiData = process.env['FINDR_STUBBED'] ? readDummySapiData : getSapiResponse;
-    
+
   getSapiData(lat, long, function(err, data) {
     res.render('outside', {lat: lat, long: long, data: data});
   });
