@@ -1,6 +1,7 @@
 var http = require('http'),
     fs = require('fs'),
-    user = require('../lib/user');
+    user = require('../lib/user'),
+    business = require('./business');
 
 exports.index = function(req, res){
   res.render('index', { activeTab: 'home', title: 'Express' })
@@ -85,3 +86,5 @@ exports.form = function (req, res, next) {
 exports.successful = function (req, res, next) {
   res.render('successful', {});
 }
+
+exports.addBusiness = business.addBusiness;

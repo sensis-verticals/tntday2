@@ -43,6 +43,7 @@ app.get('/list', routes.list);
 app.get('/form', routes.form);
 app.get('/form', routes.successful);
 
+app.post('/business', routes.addBusiness);
 
 app.listen('production' === process.env.NODE_ENV ? 80 : 3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
