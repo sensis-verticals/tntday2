@@ -1,0 +1,26 @@
+    <script>
+    function sendLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getSAPIDATA);
+      }
+      else {
+        // alert user geolocation is not turn on.
+      }
+    }
+    function getSAPIDATA(position) {
+      alert("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);  
+
+    }
+  </script>
+  
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Welcome to Findr!</h1>
+        <p>Click on the button below to get started.</p>
+        <p><a class="btn btn-primary btn-large" onClick="sendLocation()">Let's get start</a></p>
+      </div>
+
+
+    </div> <!-- /container -->
