@@ -10,6 +10,7 @@ div.hero-unit
 			each user, rank in topten
 				tr
 					td= rank+1 
-					td= user.id
+					td
+						a(href='/user/' + user.id)= user.id
 					td= user.leads
 

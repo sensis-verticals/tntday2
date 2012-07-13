@@ -36,6 +36,7 @@ app.configure('production', function(){
 app.get('/', routes.index);
 app.get('/outside', routes.outside);
 app.get('/highscores', routes.highscores);
+app.get('/user/:id', routes.user);
 
 app.listen('production' === process.env.NODE_ENV ? 80 : 3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

@@ -1,0 +1,12 @@
+div.hero-unit
+	h1= user.id
+	table.table.table-bordered.table-striped
+		thead
+			tr
+				th Name
+				th Address
+		tbody
+			each business in user.businesses
+				tr
+					td= business.businessname
+					td= business.address

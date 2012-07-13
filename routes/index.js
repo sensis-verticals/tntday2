@@ -34,7 +34,7 @@ exports.outside = function(req, res) {
   var lat = req.query.lat;
   var long = req.query.long;
   var getSapiData = process.env['FINDR_STUBBED'] ? readDummySapiData : getSapiResponse;
-    
+
   getSapiData(lat, long, function(err, data) {
     res.render('outside', {lat: lat, long: long, data: data});
   });
@@ -57,3 +57,16 @@ exports.highscores = function(req, res, next) {
         }
     );
 };
+
+exports.user = function(req, res, next) {
+    user.get(req.param('id'), function(err, foundUser) {
+        if (err) {
+            next(err);
+        } else {
+            res.render('user', {
+                user: foundUser
+            });
+        }
+    });
+};
+
