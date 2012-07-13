@@ -9,6 +9,8 @@ exports.index = function(req, res){
 function getSapiResponse(latitude, longitude, callback) {
   var sapiRequest = "http://api.sensis.com.au/ob-20110511/test/search?location=" + latitude + "," + longitude + "&key=" + process.env['SAPI_KEY'],
   data = "";
+		lat = -37.8106204,
+		long = 144.9654641;
 
   http.get(sapiRequest, function(sapiRes) {
     sapiRes.on('data', function(d) {
@@ -75,7 +77,14 @@ exports.splash = function (req, res, next) {
 }
 
 exports.list = function (req, res, next) {
-  res.render('list', {});
+	var lat = req.query.lat;
+	var long = req.query.long;
+	var getSapiData = process.env['FINDR_STUBBED'] ? readDummySapiData : getSapiResponse;
+
+	getSapiData(lat, long, function(err, data) {
+		console.log("data sent is: " + JSON.stringify(data));
+		res.render('list', {lat: lat, long: long, data: data});
+	});
 }
 
 exports.form = function (req, res, next) {
