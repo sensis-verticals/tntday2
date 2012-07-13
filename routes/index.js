@@ -8,19 +8,10 @@ exports.index = function(req, res){
 };
 
 function getSapiResponse(latitude, longitude, callback) {
-  var sapiRequest = "http://api.sensis.com.au/ob-20110511/test/search?location=" + latitude + "," + longitude + "&key=" + process.env['SAPI_KEY'],
-      data = "";
-
-  request(
-      {
-          method: 'GET',
-          uri: sapiRequest,
-          proxy: process.env.http_proxy
-      },
-      function(err, sapiRes) {
-          callback(null, JSON.parse(sapiRes.body));
-      }
-  );
+    var s = new sapi(process.env['SAPI_KEY'], 'http://api.sensis.com.au/ob-20110511/test');
+    s.location(latitude + "," + longitude).search(function(err, sapiRes) {
+        callback(null, JSON.parse(sapiRes.body));
+    });
 }
 
 function readDummySapiData(latitude, longitude, callback) {

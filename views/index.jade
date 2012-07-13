@@ -1,22 +1,21 @@
 div.container
-	div.hero-unit
-		h1 Welcome!
-		p Click on the button below to get started.
-		a.btn.btn-primary.btn-large(onClick='sendLocation()') Let's get started
+  div.hero-unit
+    p Click on the button below to get started.
+    a.btn.btn-primary.btn-large(onClick='sendLocation()') Let's get started
 
 
 script 
-	function sendLocation() {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(getSAPIDATA);
-		}
-		else {
-			// alert user geolocation is not turn on.
-		}
-	}
-	function getSAPIDATA(position) {
-		if (position && position.coords) {
-			window.location = "list?lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
-		}  
+  function sendLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(getSAPIDATA);
+    }
+    else {
+      // alert user geolocation is not turn on.
+    }
+  }
+  function getSAPIDATA(position) {
+    if (position && position.coords) {
+      window.location = "list?lat=" + position.coords.latitude + "&long=" + position.coords.longitude;
+    }  
 
-	}
+  }
