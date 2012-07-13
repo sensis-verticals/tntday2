@@ -33,7 +33,7 @@ function insertBusiness(key, business, callback) {
 
 function getUserRank(userId, callback) {
     client.zrevrank("users:leads", userId, function(err, rank) {
-        callback(err, rank ? rank+1 : rank);
+        callback(err, ((rank !== null && rank !== undefined) ? rank+1 : rank));
     });
 }
 
