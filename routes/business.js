@@ -31,19 +31,27 @@ function insertBusiness(key, business, callback) {
     });
 }
 
+function getUserRank(userId, callback) {
+    client.zrevrank("users:leads", userId, function(err, rank) {
+        callback(err, rank ? rank+1 : rank);
+    });
+}
+
 exports.addBusiness = function(req, res) {
     var body = req.body;
-    console.log(util.inspect(body));
     
     async.waterfall([
-        function(cb) { updateLeaderBoard(body.user, cb); },
         getNextBusinessKey,
-        function(key, cb) { insertBusiness(key, body, cb); }
-    ], function(err) {
+        function(key, cb) { insertBusiness(key, body, cb); },
+        function(cb) { updateLeaderBoard(body.user, cb); },
+        function(cb) { getUserRank(body.user, cb); }
+    ], function(err, rank) {
         if (err) {
             res.send(500, err);
         } else {
-            res.render('successful', {
+            console.log("user " + body.user + " is now ranked #" + rank);
+            res.render('successful', { 
+                userRank: rank
             });
         }
     });
