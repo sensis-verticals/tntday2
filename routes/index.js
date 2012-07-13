@@ -1,7 +1,8 @@
 var request = require('request'),
     fs = require('fs'),
     user = require('../lib/user'),
-    business = require('./business');
+    business = require('./business'),
+    sapi = require('sapi');
 
 exports.index = function(req, res){
   res.render('index', { activeTab: 'home', title: 'Express' })
