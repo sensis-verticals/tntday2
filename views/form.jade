@@ -1,24 +1,31 @@
-    <div class="container">
+<style>
+label {
+margin: 15px 0px 2px 0px;
+}
 
-      <div class="page-header">
-        <h2>Put logo here</h2>
-        <button>Home</a>
-      </div>
-      
-      <form class="well form-horizontal" action="">
-        <label>Business Name</label>
-        <input name="bname" type="text" class="span3" placeholder="Enter business name">
+button {
+margin-top: 10px;
+}
+</style>
 
-        <label>Business Address</label>
-        <input name="baddress" type="text" class="span3" placeholder="Enter business address">
+div.container
 
-        <label>Comments</label>
-        <input name="bcomments" type="text" class="span3" placeholder="Enter comments">
+div.page-header
+h2 Put logo here
 
-        <label>Employee Number</label>
-        <input name="enumber" type="text" class="span3" placeholder="Enter W number">
-        <br />
+<form class="well form-horizontal" action="/business" method="post">
+<label>Business Name</label>
+<input name="bname" type="text" class="span3" placeholder="Enter business name">
 
-        <button type="submit" class="btn-info">Next</button>
-      </form>
-    </div> <!-- /container -->
+<label>Business Address</label>
+<input name="baddress" type="text" class="span3" placeholder="Enter business address">
+
+<label>Comments</label>
+<input name="bcomments" type="text" class="span3" placeholder="Enter comments">
+
+<label>Employee Number</label>
+<input name="enumber" type="text" class="span3" placeholder="Enter W number">
+<br />
+
+<button type="submit" class="btn-info">Next</button>
+</form>
