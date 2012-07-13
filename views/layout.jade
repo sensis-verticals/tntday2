@@ -13,16 +13,16 @@ head
 		meta(name="description", content="")
 		meta(name="author", content="")
 		meta(name="viewport", content="width=device-width")
-		link(rel="stylesheet", href="css/bootstrap.min.css")
+		link(rel="stylesheet", href="/css/bootstrap.min.css")
 		style
 			body
 				padding-top: 60px;
 				padding-bottom: 40px;
-		link(rel="stylesheet", href="css/bootstrap-responsive.min.css")
-		link(rel="stylesheet", href="css/style.css")
+		link(rel="stylesheet", href="/css/bootstrap-responsive.min.css")
+		link(rel="stylesheet", href="/css/style.css")
 		link(rel="stylesheet", href="http://ems.whereis.com/v1/web/js/ol/theme/default/style.css", type="text/css")
 		link(rel="stylesheet", href="http://ems.whereis.com/v1/web/js/ems/theme/default/style.css", type="text/css")
-		script(src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js")
+		script(src="/js/libs/modernizr-2.5.3-respond-1.1.0.min.js")
 		script(src="http://ems.whereis.com/v1/web/js/ol/OpenLayers.js")
 		script(src="http://ems.whereis.com/v1/web/js/ems/EMS.js?token=2898620363958569984")
 		script(src="http://ems.whereis.com/v1/web/js/firebug/firebugx.js")
@@ -30,7 +30,7 @@ head
 			EMS.Services.communicationMode = "CrossDomain";
 		script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js")
 		script
-			window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')
+			window.jQuery || document.write('<script src="/js/libs/jquery-1.7.2.min.js"><\/script>')
 body
 		div.navbar.navbar-fixed-top
 			div.navbar-inner
@@ -50,3 +50,6 @@ body
 	footer.footer
 		p
 			&copy;Sensis Pty Ltd 2012
+// scripts concatenated and minified via ant build script
+script(src="/js/libs/bootstrap/bootstrap.min.js")
+script(src="/js/script.js")

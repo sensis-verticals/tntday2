@@ -37,6 +37,7 @@ app.get('/', routes.index);
 app.get('/splash', routes.splash);
 app.get('/outside', routes.outside);
 app.get('/highscores', routes.highscores);
+app.get('/user/:id', routes.user);
 
 app.get('/list', routes.list);
 app.get('/form', routes.form);
