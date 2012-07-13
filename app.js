@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -42,6 +41,10 @@ app.get('/user/:id', routes.user);
 app.get('/list', routes.list);
 app.get('/form', routes.form);
 app.get('/form', routes.successful);
+
+process.on('uncaughtException', function (err) {
+  console.error('Uncaught exception: ' + err.message);
+});
 
 
 app.listen('production' === process.env.NODE_ENV ? 80 : 3000, function(){
